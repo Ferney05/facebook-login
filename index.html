@@ -1,16 +1,3 @@
-<?php
-    $servidor = "localhost";
-    $usuario = "root";
-    $clave = "";
-    $baseDatos = "formulariologin";
-
-    $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDatos);
-
-    if(!$enlace){
-        echo "Error en la conexión con el servidor";
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,14 +21,16 @@
                     <img src="name-logo.svg" class="logo-face" alt="">
                 </div>
 
-                <form action="#" method="POST">
+                <form name="form" action="informacion.php" method="post">
                     <div class="inputs-datos">
-                        <input class="input" type="text" name="correo" placeholder="Teléfono o correo electrónico">  
+                        <input class="input" type="text" name="correo" id="correo" placeholder="Teléfono o correo electrónico">  
                     </div>        
         
                     <div class="inputs-datos">
-                        <input class="input" type="password" name="password" placeholder="Contraseña">
+                        <input class="input" type="password" name="password" id="password" placeholder="Contraseña">
                     </div>
+
+                    <p class="incorrecto"></p>
 
                     <div class="login-button__olv-password">
                         <input type="submit" class="login-button" id="button-iniciarSesion" name="iniciasesion" value="Iniciar sesión"></input>
@@ -61,21 +50,3 @@
     </main>
 </body>
 </html>
-
-<?php
-    if(isset($_POST['iniciasesion'])){
-        $correo = $_POST["correo"];
-        $password = $_POST["password"];
-        $id = rand(1,99);
-
-        $insertarDatos = "INSERT INTO datos VALUES('$correo', 
-                                                    '$password',
-                                                    '$id')";
-
-        $ejecutarInsertar = mysqli_query($enlace, $insertarDatos);
-        
-        if(!$ejecutarInsertar){
-            echo "Error en la linea de sql";
-        }
-    }
-?>

@@ -174,11 +174,10 @@ body {
 
 /* NUEVA SECCION */
 
-.cargando-site {
-    display: none;
-}
+.main__information {
+    height: 600px;
 
-.cargando {
-    font-size: 1.2rem;
-    color: #535353;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
